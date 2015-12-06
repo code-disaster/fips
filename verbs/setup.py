@@ -3,9 +3,10 @@
 setup emscripten
 setup nacl
 setup android
+setup rpi
 """
 
-from mod import log, emscripten, nacl, android
+from mod import log, emscripten, nacl, android, rpi
 
 #-------------------------------------------------------------------------------
 def run(fips_dir, proj_dir, args) :
@@ -19,8 +20,10 @@ def run(fips_dir, proj_dir, args) :
         nacl.setup(fips_dir, proj_dir)
     elif sdk_name == 'android' :
         android.setup(fips_dir, proj_dir)
+    elif sdk_name == 'rpi' :
+        rpi.setup(fips_dir, proj_dir)
     else :
-        log.error("invalid SDK name (must be 'emscripten', 'nacl' or 'android')")
+        log.error("invalid SDK name (must be 'emscripten', 'nacl', 'android' or 'rpi')")
 
 #-------------------------------------------------------------------------------
 def help() :
@@ -29,6 +32,7 @@ def help() :
              "fips setup emscripten\n"
              "fips setup nacl\n"
              "fips setup android\n"
+             "fips setup rpi\n"
              + log.DEF +
              "    setup cross-platform SDK") 
     

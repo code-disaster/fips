@@ -6,7 +6,7 @@ import yaml
 from collections import OrderedDict
 from mod import log, util, dep
 from mod.tools import cmake, make, ninja, xcodebuild
-from mod import emscripten, nacl, android
+from mod import emscripten, nacl, android, rpi
 
 # non-cross-compiling platforms
 native_platforms = [
@@ -255,6 +255,8 @@ def check_sdk(fips_dir, platform_name) :
         return nacl.check_exists(fips_dir)
     elif platform_name == 'android' :
         return android.check_exists(fips_dir)
+    elif platform_name == 'rpi' :
+        return rpi.check_exists(fips_dir)
     else :
         return True
 
